@@ -16,6 +16,7 @@ import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { useIsFocused } from "@react-navigation/native";
 
 //Instances
 const Tab = createBottomTabNavigator();
@@ -23,19 +24,25 @@ const Stack = createNativeStackNavigator();
 
 //Renderers
 const TabNav = () => {
+    //Hooks
+    const isFocused = useIsFocused();
+
     return(
         <Tab.Navigator>
             <Tab.Screen name={'Dashboard'} component={DashboardScreen} options={{
-                tabBarIcon:() => (<MaterialIcons name={'dashboard'} size={28}/>),
+                tabBarIcon:({ color }) => (<MaterialIcons name={'dashboard'} size={28} color={color}/>),
                 headerShown: false,
+                tabBarActiveTintColor: "orange",
             }}/>
             <Tab.Screen name={'Browse'} component={BrowseScreen} options={{
-                tabBarIcon:() => (<Entypo name={'magnifying-glass'} size={28}/>),
+                tabBarIcon:({ color }) => (<Entypo name={'magnifying-glass'} size={28} color={color}/>),
                 headerShown: false,
+                tabBarActiveTintColor: "orange",
             }}/>
             <Tab.Screen name={'Saved'} component={SavedScreen} options={{
-                tabBarIcon:() => (<FontAwesome name={'bookmark'} size={28}/>),
+                tabBarIcon:({ color }) => (<FontAwesome name={'bookmark'} size={28} color={color}/>),
                 headerShown: false,
+                tabBarActiveTintColor: "orange",
             }}/>
         </Tab.Navigator>
     )
