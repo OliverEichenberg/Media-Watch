@@ -2,6 +2,7 @@
 //React
 import { useState, useEffect } from 'react';
 import { useColorScheme } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 
 //Screens
@@ -51,7 +52,11 @@ const TabNav = () => {
                 headerShown: false,
                 tabBarInactiveTintColor: style.color,
                 tabBarActiveTintColor: style.tintColor,
-                tabBarStyle: { backgroundColor: style.backgroundColor },
+                tabBarStyle: {
+                    backgroundColor: style.backgroundColor,
+                    borderTopColor: style.tintColor,
+                    borderTopWidth: 2,
+                },
         }}>
             <Tab.Screen name={'Dashboard'} component={DashboardScreen} options={{
                 tabBarIcon:({ color }) => (<MaterialIcons name={'dashboard'} size={28} color={color}/>),
@@ -69,17 +74,16 @@ const TabNav = () => {
 const App = () => {
     return (
       <NavigationContainer>
-          <Stack.Navigator >
-              <Stack.Screen name={'Home'} component={HomeScreen} options={{
-                  headerShown: false,
-              }}/>
-              <Stack.Screen name={'Login'} component={LoginScreen} options={{
-                  headerShown: false,
-              }}/>
-              <Stack.Screen name={'App'} component={TabNav} options={{
-                  headerShown: false,
-              }}/>
+          <Stack.Navigator
+            screenOptions={{
+                headerShown: false,
+            }}
+          >
+              <Stack.Screen name={'Home'} component={HomeScreen}/>
+              <Stack.Screen name={'Login'} component={LoginScreen}/>
+              <Stack.Screen name={'App'} component={TabNav}/>
           </Stack.Navigator>
+          <StatusBar style='auto' />
       </NavigationContainer>
   );
 }
