@@ -1,19 +1,24 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View, Text, useColorScheme } from 'react-native';
 
-import { GestureDetector, Gesture } from 'react-native-gesture-handler';
 
-const native = Gesture.Native();
+//Renderers
+const renderLight = () => {
 
+}
 
 const DashboardScreen = () => {
+    //Color Scheme
+    const colorScheme = useColorScheme();
+
+    const pageScheme = colorScheme === 'light' ? styles.lightPage : styles.darkPage;
+
+
     return (
-        <GestureDetector gesture={Gesture.Native()}>
-            <View style={styles.wrapper}>
-                <Text>Testing2</Text>
-                <StatusBar style={"auto"} />
-            </View>
-        </GestureDetector>
+        <View style={[styles.wrapper, pageScheme]}>
+            <Text>Testing2</Text>
+            <StatusBar style={"auto"} />
+        </View>
     );
 }
 
@@ -21,10 +26,16 @@ const DashboardScreen = () => {
 const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
-        backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
     },
+    lightPage: {
+        backgroundColor: '#f7fafd',
+    },
+    darkPage: {
+        // backgroundColor: '#020508',
+        backgroundColor: 'white',
+    }
 });
 
 export default DashboardScreen;

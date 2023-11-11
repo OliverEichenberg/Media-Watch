@@ -1,4 +1,9 @@
 
+//React
+import { useState, useEffect } from 'react';
+import { useColorScheme } from "react-native";
+
+
 //Screens
 import HomeScreen from "./screens/home";
 import LoginScreen from "./screens/login";
@@ -15,43 +20,56 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import MaterialIcons from "@expo/vector-icons/MaterialIcons";
 import Entypo from "@expo/vector-icons/Entypo";
+
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
-import { useIsFocused } from "@react-navigation/native";
+
+import { StyleSheet } from "react-native";
+
+
 
 //Instances
 const Tab = createBottomTabNavigator();
 const Stack = createNativeStackNavigator();
 
-//Renderers
+
+
 const TabNav = () => {
     //Hooks
-    const isFocused = useIsFocused();
+    const colorScheme = useColorScheme();
+
+    //States
+    const [style, setStyle] = useState(styles.lightStyle)
+
+    //Lifecycle
+    useEffect(() => {
+        colorScheme == "dark" ? setStyle(styles.darkStyle) : setStyle(styles.lightStyle)
+    }, [colorScheme])
 
     return(
-        <Tab.Navigator>
+        <Tab.Navigator
+            screenOptions={{
+                headerShown: false,
+                tabBarInactiveTintColor: style.color,
+                tabBarActiveTintColor: style.tintColor,
+                tabBarStyle: { backgroundColor: style.backgroundColor },
+        }}>
             <Tab.Screen name={'Dashboard'} component={DashboardScreen} options={{
                 tabBarIcon:({ color }) => (<MaterialIcons name={'dashboard'} size={28} color={color}/>),
-                headerShown: false,
-                tabBarActiveTintColor: "orange",
             }}/>
             <Tab.Screen name={'Browse'} component={BrowseScreen} options={{
                 tabBarIcon:({ color }) => (<Entypo name={'magnifying-glass'} size={28} color={color}/>),
-                headerShown: false,
-                tabBarActiveTintColor: "orange",
             }}/>
             <Tab.Screen name={'Saved'} component={SavedScreen} options={{
                 tabBarIcon:({ color }) => (<FontAwesome name={'bookmark'} size={28} color={color}/>),
-                headerShown: false,
-                tabBarActiveTintColor: "orange",
             }}/>
         </Tab.Navigator>
     )
 }
 
 const App = () => {
-  return (
+    return (
       <NavigationContainer>
-          <Stack.Navigator>
+          <Stack.Navigator >
               <Stack.Screen name={'Home'} component={HomeScreen} options={{
                   headerShown: false,
               }}/>
@@ -65,5 +83,26 @@ const App = () => {
       </NavigationContainer>
   );
 }
+
+
+const styles = StyleSheet.create({
+    wrapper: {
+        flex: 1,
+        alignItems: 'center',
+        justifyContent: 'center',
+    },
+    lightStyle: {
+        backgroundColor: '#f7fafd',
+        color: '#061118',
+        tintColor: '#3fa5ee'
+    },
+    darkStyle: {
+        backgroundColor: '#020508',
+        color: '#e7f2f9',
+        tintColor: '#1177c0'
+    }
+});
+
+
 
 export default App;

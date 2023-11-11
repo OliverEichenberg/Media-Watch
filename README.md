@@ -15,7 +15,7 @@
 
 
 
-## Dark :new_moon:
+## Dark Theme :new_moon:
 
 ### Colors :art:
 | Color       | Code      |
