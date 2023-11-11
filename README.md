@@ -38,12 +38,10 @@
 <details>
 <summary>Container :card_file_box:</summary>
     > Surrounding component for majority of media display 
-    
     Props:
     - *Color(s) "colors" | Type: String[]
     - *Style "style" | Type: StyleSheet Component[^1]
     - Gradient Direct "direction" | Type: Direction Type[^2] | Defaults To "left"
-
     [^1]: In the example "testComponent" would be the value passed as the prop "style"
             ```
             const styles = StyleSheet.create({
@@ -52,7 +50,6 @@
                 }
             })
             ```
-
     [^2]: Valid Values: 
             ```
             "left"
