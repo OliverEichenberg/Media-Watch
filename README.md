@@ -36,29 +36,23 @@
 ## Components :wrench:
 
 <details>
-<<<<<<< HEAD
 <summary>Container :bento:</summary>
 
     > Surrounding component with many types, responsible for the constructionn of bento layouts
 
     Props:
-    - *Type "type" | Type: Contaienr Type [^1]
+    - *Type "type" | Type: Container Type [^1]
+    - *Theme "theme" | Type: Theme Type [^2]
 
     [^1]: Valid Values:
-=======
-<summary>Container :card_file_box:</summary>
-    > Surrounding component for majority of media display 
-    Props:
-    - *Color(s) "colors" | Type: String[]
-    - *Style "style" | Type: StyleSheet Component[^1]
-    - Gradient Direct "direction" | Type: Direction Type[^2] | Defaults To "left"
-    [^1]: In the example "testComponent" would be the value passed as the prop "style"
->>>>>>> 23832cb45db122e90d31f8e4a667d0849d79102f
             ```
             "square"
             "rectangle"
             ```
-<<<<<<< HEAD
+    [^2]: Example:
+            ```
+            
+            ```
 </details>
 
 <details>
@@ -70,17 +64,3 @@
     - *Title "title" | Type: String
     - Secondary "secondary" | Type: Component
 </details>
-=======
-    [^2]: Valid Values: 
-            ```
-            "left"
-            "right"
-            "top"
-            "bottom"
-            "top-left"
-            "top-right"
-            "bottom-left"
-            "bottom-right"
-            ```
-</details>
->>>>>>> 23832cb45db122e90d31f8e4a667d0849d79102f

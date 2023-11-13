@@ -14,14 +14,14 @@ const Heading = (props) => {
     return (
         <View style={{ flex: 0, flexDirection: 'row', justifyContent: 'space-between', marginHorizontal: 30}}>
             <Text style={styles.text}>{props.title}</Text>
-            <Text style={styles.text}>** 3</Text>
+            <Text style={styles.text}>{props?.secondary}</Text>
         </View>
     )
 }
 
 const styles = StyleSheet.create({
     wrapper: {
-        width: '100%',
+        width: '100vw',
         height: '10%',
     },
     text: {

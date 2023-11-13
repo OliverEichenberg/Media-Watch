@@ -1,6 +1,13 @@
 //React
-import { View, Text, StyleSheet, useColorScheme } from 'react-native';
+import { View, Text, StyleSheet, useColorScheme, SafeAreaView, ScrollView } from 'react-native';
 import { useEffect, useState } from "react";
+
+//Fonts
+import { Pacifico_400Regular, useFonts } from "@expo-google-fonts/pacifico";
+
+//Components
+import Heading from '../components/heading';
+import Film from '../components/film';
 
 const BrowseScreen = () => {
     //Hooks
@@ -14,9 +21,20 @@ const BrowseScreen = () => {
         colorScheme == "dark" ? setStyle(styles.darkStyle) : setStyle(styles.lightStyle)
     }, [colorScheme])
 
+    let [fonts, error] = useFonts({
+        Pacifico_400Regular,
+    });
+
+    if (!fonts && !error) {
+        return null;
+    }
+
+
     return (
         <View style={[styles.wrapper, style]}>
-            <Text>Browse Screen</Text>
+            <View style={styles.content}>
+                <Film />
+            </View>
         </View>
     )
 }
@@ -25,8 +43,11 @@ const styles = StyleSheet.create({
     wrapper: {
         flex: 1,
         backgroundColor: '#fff',
-        alignItems: 'center',
+        alignItems: 'flex-start',
         justifyContent: 'center',
+    },
+    content: {
+        height: '85%',
     },
     lightStyle: {
         backgroundColor: '#f7fafd',

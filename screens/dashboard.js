@@ -7,7 +7,10 @@ import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico';
 
 //Components
 import Heading from '../components/heading';
-import Container from "../components/container/container";
+import Container from "../components/container";
+
+//Icons
+import { Ionicons } from "@expo/vector-icons";
 
 const DashboardScreen = () => {
     //Hooks
@@ -33,13 +36,17 @@ const DashboardScreen = () => {
     return (
         <View style={[styles.wrapper, theme]}>
             <View style={styles.content}>
-                <Heading title={'Welcome Back!'}/>
+                <Heading title={'Welcome Back!'} secondary={<Text><Ionicons name="flame" size={24} color={theme.text} />0</Text>}/>
                 <View style={{ flex: 2, flexDirection: 'row', flexWrap: 'wrap', gap: 20, justifyContent: 'center' }}>
-                    <Container type={'rectangle'}></Container>
-                    <Container type={'square'}></Container>
-                    <Container type={'square'}></Container>
-                    <Container type={'square'}></Container>
-                    <Container type={'square'}></Container>
+                    <Container type={'rectangle'}>
+                        <Text>Testing</Text>
+                    </Container>
+                    <Container type={'square'}>
+                        <Text>Obseict</Text>
+                    </Container>
+                    <Container type={'square'} />
+                    <Container type={'square'} />
+                    <Container type={'square'} />
                 </View>
             </View>
 
@@ -57,8 +64,10 @@ const styles = StyleSheet.create({
     },
     content: {
         height: '85%',
+        width: '100%'
     },
     lightStyle: {
+        text: '#e7f2f9',
         backgroundColor: '#f7fafd',
         primary: '#3489c5',
         secondary: '#bbd9ed',
@@ -69,6 +78,7 @@ const styles = StyleSheet.create({
         },
     },
     darkStyle: {
+        text: '#e7f2f9',
         backgroundColor: '#020508',
         primary: '#3a8ecb',
         secondary: '#123044',
