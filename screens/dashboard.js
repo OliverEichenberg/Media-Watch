@@ -2,29 +2,47 @@
 import { StyleSheet, View, Text, useColorScheme } from 'react-native';
 import {useEffect, useState} from "react";
 
+//Fonts
+import { useFonts, Pacifico_400Regular } from '@expo-google-fonts/pacifico';
+
 //Components
-import Container from "../components/container";
+import Heading from '../components/heading';
+import Container from "../components/container/container";
 
 const DashboardScreen = () => {
     //Hooks
     const colorScheme = useColorScheme();
 
     //States
-    const [style, setStyle] = useState(styles.lightStyle)
+    const [theme, setTheme] = useState(styles.lightStyle)
 
     //Lifecycle
     useEffect(() => {
-        colorScheme == "dark" ? setStyle(styles.darkStyle) : setStyle(styles.lightStyle)
+        colorScheme == "dark" ? setTheme(styles.darkStyle) : setTheme(styles.lightStyle)
     }, [colorScheme])
 
+    let [fonts, error] = useFonts({
+        Pacifico_400Regular,
+    });
+
+    if (!fonts && !error) {
+        return null;
+    }
+
+
     return (
-        <View style={[styles.wrapper, style]}>
-            <View style={{ flex: 1, flexDirection: 'row', flexWrap: 'wrap', alignContent: 'space-around', justifyContent: 'space-around' }}>
-                <Container style={style} direction='bottom-right' />
-                <Container style={style} direction='bottom-left' />
-                <Container style={style} direction='top-right' />
-                <Container style={style} direction='top-left' />
+        <View style={[styles.wrapper, theme]}>
+            <View style={styles.content}>
+                <Heading title={'Welcome Back!'}/>
+                <View style={{ flex: 2, flexDirection: 'row', flexWrap: 'wrap', gap: 20, justifyContent: 'center' }}>
+                    <Container type={'rectangle'}></Container>
+                    <Container type={'square'}></Container>
+                    <Container type={'square'}></Container>
+                    <Container type={'square'}></Container>
+                    <Container type={'square'}></Container>
+                </View>
             </View>
+
         </View>
     );
 }
@@ -35,6 +53,10 @@ const styles = StyleSheet.create({
         flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
+
+    },
+    content: {
+        height: '85%',
     },
     lightStyle: {
         backgroundColor: '#f7fafd',

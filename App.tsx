@@ -1,4 +1,3 @@
-
 //React
 import { useState, useEffect } from 'react';
 import { useColorScheme } from "react-native";
