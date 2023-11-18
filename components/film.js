@@ -8,9 +8,12 @@ const Film = () => {
         <View style={styles.wrapper}>
             <ImageBackground source={image} style={styles.image}>
                 <View style={{ width: '100%', height: '100%', position: 'relative' }}>
-                        <View style={styles.footer}>
-                            <View style={styles.tag}><Text style={{ color: '#e7f2f9' }}>Testing</Text></View>
-                        </View>
+                    <View style={styles.heading}>
+                        <Text style={{ color: '#3a8ebc' }}>Testing</Text>
+                    </View>
+                    <View style={styles.footer}>
+                        <View style={styles.tag}><Text style={{ color: 'white' }}>Testing</Text></View>
+                    </View>
                 </View>
             </ImageBackground>
         </View>
@@ -40,12 +43,19 @@ const styles = StyleSheet.create({
     tag: {
         flex: 0,
         alignItems: 'center',
+        justifyContent: 'center',
         backgroundColor: '#3a8ebc',
         width: 60,
+        height: 18,
         borderRadius: 25,
     },
     image: {
-        opacity: 0.5,
+        margin: 10,
+        overflow: 'hidden',
+        borderRadius: 25
+    },
+    heading: {
+
     }
 });
 
